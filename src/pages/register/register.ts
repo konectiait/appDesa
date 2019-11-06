@@ -11,6 +11,11 @@ export class User {
   Nombre: string;
   Telefono: string;
   Token: string;
+  Direccion: string;
+  Razon_Social: string;
+  Estado: string;
+  IdTipo: string;
+  Cuit: string;
 }
 
 
@@ -31,11 +36,6 @@ tabs(){
 
  RegistrarUsuario(){
     let tokenFb ="";
-    console.log("El mail es: "+this.user.Mail);
-    console.log("El pass es: "+this.user.password);
-    console.log("El usuarios es: "+this.user.Nombre);
-    console.log("El Telefono es: "+this.user.Telefono);
-   
     this.authService.registerUser( this.user.Mail, this.user.password)
     .then(info=>{
       console.log('usuario registrado');

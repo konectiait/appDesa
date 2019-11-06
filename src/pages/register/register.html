@@ -18,8 +18,20 @@
                 <ion-input [(ngModel)]="user.Nombre" type="email" value=""></ion-input>
             </ion-item>
             <ion-item>
+                <ion-label floating>{{'user_business_name' | translate}}</ion-label>
+                <ion-input [(ngModel)]="user.Razon_Social" type="text" value=""></ion-input>
+            </ion-item>
+            <ion-item>
                 <ion-label floating>{{'user_telephone' | translate}}</ion-label>
-                <ion-input [(ngModel)]="user.Telefono" type="text" value=""></ion-input>
+                <ion-input [(ngModel)]="user.Telefono" type="number" value=""></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{'user_cuit' | translate}}</ion-label>
+                <ion-input [(ngModel)]="user.Cuit" type="number" value="" maxlength="11"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{'user_address' | translate}}</ion-label>
+                <ion-input [(ngModel)]="user.Direccion" type="text" value=""></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>{{'email_address' | translate}}</ion-label>
