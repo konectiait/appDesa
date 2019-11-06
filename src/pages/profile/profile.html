@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'my_profile' | translate}}<span class="end text-theme">{{'save' | translate}}</span></ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+    <div class="form" padding-left padding-right>
+        <ion-list no-lines padding-left padding-right>
+            <div class="store_img">
+                <!--        <img src="assets/imgs/profile.png">-->
+                <ion-icon name="md-camera" class="text-white bg-theme add-pic"></ion-icon>
+            </div>
+            <ion-item>
+                <ion-label floating>{{'shop_name' | translate}}</ion-label>
+                <ion-input type="text" value="Golden Bakery"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>{{'shaop_category' | translate}}</ion-label>
+                <ion-select [(ngModel)]="shaop_category">
+                    <ion-option value="Dairy">{{'Dairy & Bakery' | translate}}</ion-option>
+                    <ion-option value="Bakery">{{'Bakery' | translate}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>{{'phone_number' | translate}}</ion-label>
+                <ion-input type="text" value="+1 987 654 3210"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>{{'email_address' | translate}}</ion-label>
+                <ion-input type="text" value="goldenbakery@mail.com"></ion-input>
+            </ion-item>
+
+            <ion-item class="about_offer">
+                <ion-label floating>{{'about_shop' | translate}}</ion-label>
+                <ion-textarea type="text" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"></ion-textarea>t>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{'address2' | translate}}</ion-label>
+                <ion-input type="text" value="1124, Old Church Street (250m)"></ion-input>
+            </ion-item>
+            <ion-row>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-label item-start>{{'shop_openiing_time' | translate}}</ion-label>
+                        <div class="input_box d-flex" item-end>
+                            <ion-icon class="material-icons text-white">access_time</ion-icon>
+                            <ion-input type="text" value="08:00"></ion-input>
+                        </div>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-label item-start>{{'shop_closing_time' | translate}}</ion-label>
+                        <div class="input_box d-flex" item-end>
+                            <ion-icon class="material-icons text-white">access_time</ion-icon>
+                            <ion-input type="text" value="22:00"></ion-input>
+                        </div>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+    </div>
+</ion-content>

@@ -1,0 +1,4 @@
+#Sun Oct 27 18:32:03 ART 2019
+base.0=D\:\\ionic\\MundoCanjeApp\\mobile\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,204 @@
+<ion-header class="bg-color">
+  <ion-navbar>
+      <ion-title class="text-theme">{{'canje_title' | translate}}         
+      </ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="near">
+      <ion-segment-button value="Ofrecidos">
+          {{'offers' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="Recibidos">
+          {{'requested' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="Canjeados">
+          {{'redeemed' | translate}}
+      </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content class="bg-color">
+  <div [ngSwitch]="near">
+      <ion-list *ngSwitchCase="'Ofrecidos'" no-lines>
+        <ion-item (click)="edit_event()">   
+          <img src="assets/imgs/10.png" class="bg">
+          
+          <ion-badge item-end>
+              <ion-icon name="md-stopwatch"></ion-icon>
+              6 Dias
+          </ion-badge>
+          <div class="text">
+              <h2>10 Clases de Guitarra acústica </h2>
+              <p class="d-flex">
+                  <span class="text-theme">Palermo. Buenos Aires</span>
+                  <span class=""> | Música</span>
+                  <span class="end">$2.300</span>
+              </p>                  
+          </div>
+        </ion-item>
+        <ion-item (click)="edit_event()">
+          <img src="assets/imgs/3.png" class="bg">
+          
+          <ion-badge item-end>
+              <ion-icon name="md-stopwatch"></ion-icon>
+              2 Dias
+          </ion-badge>
+          <div class="text">
+              <h2>Mesa dulce para eventos hasta 20 personas </h2>
+              <p class="d-flex">
+                  <span class="text-theme">Palermo. Buenos Aires</span>
+                  <span class=""> | Gastronomía</span>
+                  <span class="end">$5.600</span>
+              </p>                  
+          </div>
+        </ion-item>
+        <ion-item (click)="edit_event()">
+          <img src="assets/imgs/6.png" class="bg">
+          
+          <ion-badge item-end>
+              <ion-icon name="md-stopwatch"></ion-icon>
+              10 Horas
+          </ion-badge>
+          <div class="text">
+              <h2>5 Remeras manga corta marca Narrow </h2>
+              <p class="d-flex">
+                  <span class="text-theme">Palermo. Buenos Aires</span>
+                  <span class=""> | Moda</span>
+                  <span class="end">$1.800</span>
+              </p>                  
+          </div>
+        </ion-item>
+      </ion-list>      
+      <ion-list class="ListReview" no-lines *ngSwitchCase="'Recibidos'">
+        <ion-item  (click)="ViewMatch()">
+            <div class="item_header d-flex">
+                <div class="profile d-flex">
+                    <div class="profile-img">
+                        <img src="assets/imgs/dp1.png">
+                    </div>
+                    <h2 class="text-black">
+                        Martina Valdez
+                        <span class="text-gray">2 Horas</span>
+                    </h2>
+                </div>
+                <div class="rating end">
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                </div>
+            </div>
+            <p class="text-white text">
+                Hola tengo una bicicleta playera es muy bueno estado para intercambiar por las clases de Guitarra. Precio estimado $2500
+            </p>
+        </ion-item>
+        
+        <ion-item  (click)="ViewMatch()"> 
+            <div class="item_header d-flex">
+                <div class="profile d-flex">
+                    <div class="profile-img">
+                        <img src="assets/imgs/dp3.png">
+                    </div>
+                    <h2 class="text-black">
+                        Julia Mendes
+                        <span class="text-gray">15/10/2019</span>
+                    </h2>
+                </div>
+                <div class="rating end">
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                </div>
+            </div>
+            <p class="text-white text">
+                Hola tengo una cámara de fotos Kodak para cambiar por las clases de Guitarra. Precio estimado $1900
+            </p>
+        </ion-item>
+
+        <ion-item  (click)="ViewMatch()">
+            <div class="item_header d-flex">
+                <div class="profile d-flex">
+                    <div class="profile-img">
+                        <img src="assets/imgs/user4.jpg">
+                    </div>
+                    <h2 class="text-black">
+                        Silvia Paez
+                        <span class="text-gray">15/10/2019</span>
+                    </h2>
+                </div>
+                <div class="rating end">
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                </div>
+            </div>
+            <p class="text-white text">
+                Quisiera cambiar un microondas por tus Anteojos Rayban. Precio estimado $3500
+            </p>
+        </ion-item>
+        
+        <ion-item  (click)="ViewMatch()">
+            <div class="item_header d-flex">
+                <div class="profile d-flex">
+                    <div class="profile-img">
+                        <img src="assets/imgs/user3.jpg">
+                    </div>
+                    <h2 class="text-black">
+                        Pablo Mesenas
+                        <span class="text-gray">10/10/2019</span>
+                    </h2>
+                </div>
+                <div class="rating end">
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class="acteive"></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                </div>
+            </div>
+            <p class="text-white text">
+                Quisiera cambiar servicios de páginas web por tus Anteojos Rayban. Precio estimado $3000
+            </p>
+        </ion-item>
+    </ion-list>
+      <ion-list *ngSwitchCase="'Canjeados'">
+          <ion-item (click)="eventdetail()">
+              <img src="assets/imgs/12.jpg" class="bg">
+              <ion-badge item-end>
+                  <ion-icon name="md-calendar"></ion-icon>
+                  14/10/2019
+              </ion-badge>
+              <div class="text">
+                  <h2>1 Parrillada completa para 4 personas</h2>
+                  <p class="d-flex">
+                      <span class="text-theme">Parrilla Locos de Asar</span>
+                      <span class="">| Gastronomía</span>
+                  </p>
+              </div>
+          </ion-item>
+          <ion-item (click)="eventdetail()">
+              <img src="assets/imgs/18.jpg" class="bg">
+              <ion-badge item-end>
+                  <ion-icon name="md-calendar"></ion-icon>
+                  10/10/2019
+              </ion-badge>
+              <div class="text">
+                  <h2>2 Docenas de facturas mixtas </h2>
+                  <p class="d-flex">
+                      <span class="text-theme">Las Medialunas del Abuelo</span>
+                      <span class="">| Gastronomía</span>
+                  </p>
+              </div>
+          </ion-item>
+        
+      </ion-list>
+  </div>
+  
+</ion-content>
+<ion-footer no-border class="d-flex">
+  <ion-icon class="material-icons text-white bg-theme end" (click)="NuevoCanje()">add</ion-icon>
+</ion-footer>
