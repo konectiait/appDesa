@@ -39,12 +39,14 @@ import { TerminosServiceProvider } from '../providers/terminos-service/terminos-
 import { FaqProvider } from '../providers/faq/faq';
 import { CategoryServiceProvider } from '../providers/category-service/category-service';
 import { AutenticationServiceProvider } from '../providers/autentication-service/autentication-service';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 import * as firebase from 'firebase';
+
  
 firebase.initializeApp({
   apiKey: "AIzaSyB1V9Scjuy2FzVELWlycpjYoUxnqoqrP2w",
@@ -134,7 +136,8 @@ firebase.initializeApp({
     TerminosServiceProvider,
     FaqProvider,
     CategoryServiceProvider,
-    AutenticationServiceProvider
+    AutenticationServiceProvider,
+    UserServiceProvider
   ]
 })
 export class AppModule {}

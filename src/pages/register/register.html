@@ -15,11 +15,15 @@
         <ion-list no-lines padding-left padding-right>
             <ion-item>
                 <ion-label floating>{{'user_name' | translate}}</ion-label>
-                <ion-input [(ngModel)]="user.username" type="email" value=""></ion-input>
+                <ion-input [(ngModel)]="user.Nombre" type="email" value=""></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{'user_telephone' | translate}}</ion-label>
+                <ion-input [(ngModel)]="user.Telefono" type="text" value=""></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>{{'email_address' | translate}}</ion-label>
-                <ion-input [(ngModel)]="user.email" type="email" value=""></ion-input>
+                <ion-input [(ngModel)]="user.Mail" type="email" value=""></ion-input>
             </ion-item>
             <ion-item class="password">
                 <ion-label floating>{{'set_password' | translate}}</ion-label>

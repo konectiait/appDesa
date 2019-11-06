@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController,ToastController } from 'ionic-angular';
 import { AutenticationServiceProvider } from '../../providers/autentication-service/autentication-service';
+import { UserServiceProvider } from '../../providers/user-service/user-service';
 
 import { TabsPage } from '../tabs/tabs';
 
 export class User {
-  email: string;
+  Mail: string;
   password: string;
-  username: string;
+  Nombre: string;
+  Telefono: string;
+  Token: string;
 }
 
 
@@ -19,8 +22,7 @@ export class User {
 
 export class RegisterPage {
   public user:User = new User();
-  constructor(public navCtrl: NavController, public authService:AutenticationServiceProvider,public toastController: ToastController) {
-
+  constructor(public navCtrl: NavController, public authService:AutenticationServiceProvider,public toastController: ToastController, public userService: UserServiceProvider) {
   }
 
 tabs(){
@@ -28,23 +30,39 @@ tabs(){
   }
 
  RegistrarUsuario(){
-    let token ="";
-    console.log("El mail es: "+this.user.email);
+    let tokenFb ="";
+    console.log("El mail es: "+this.user.Mail);
     console.log("El pass es: "+this.user.password);
-    console.log("El usuarios es: "+this.user.username);
+    console.log("El usuarios es: "+this.user.Nombre);
+    console.log("El Telefono es: "+this.user.Telefono);
    
-    this.authService.registerUser( this.user.email, this.user.password)
+    this.authService.registerUser( this.user.Mail, this.user.password)
     .then(info=>{
-      console.log('usuario registrador');
-      this.presentToast('EL usuario se registró correctamente');
-      token =info.user.uid;
-      this.navCtrl.setRoot(TabsPage,{tokenU:token});
+      console.log('usuario registrado');
+      this.presentToast('Registrado correctamente');
+      tokenFb =info.user.uid;
+      this.user.Token = tokenFb;
+      this.registerToDB();
+      this.navCtrl.setRoot(TabsPage,{tokenU:tokenFb});
     })
     .catch(error=>{
-          this.presentToast('Usuario o clave incorrecto');
-          console.log("Errorororor......");
+          this.presentToast(error);
+          console.log("ERror......");
     });   
   }
+
+  registerToDB() {    
+    this.userService.postUser(this.user)        
+    .subscribe(
+        (data)=> {
+          this.presentToast('OK');
+          console.log(data);
+          console.log("Usuario Id: "+ data);
+        },
+        (error)=>{console.log(error);}
+    )        
+  }
+
   async presentToast(texto) {
     const toast = await this.toastController.create({
       message: texto,
