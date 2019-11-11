@@ -46,6 +46,9 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 import * as firebase from 'firebase';
+import { GlobalProvider } from '../providers/global/global';
+import { ProductServiceProvider } from '../providers/product-service/product-service';
+import { GlobalProductProvider } from '../providers/global-product/global-product';
 
  
 firebase.initializeApp({
@@ -137,7 +140,10 @@ firebase.initializeApp({
     FaqProvider,
     CategoryServiceProvider,
     AutenticationServiceProvider,
-    UserServiceProvider
+    UserServiceProvider,
+    GlobalProvider,
+    ProductServiceProvider,
+    GlobalProductProvider
   ]
 })
 export class AppModule {}

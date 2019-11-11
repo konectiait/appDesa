@@ -14,10 +14,10 @@ export class TabsPage {
   tab2Root = CanjesPage;
   tab3Root = ChatsPage;
   tab4Root = MapPage;
-
   tokenUsuario;
+ 
   constructor(public navParams: NavParams) {
     this.tokenUsuario = this.navParams.get('tokenU');
-    console.log("EL token del usuario es:"+this.tokenUsuario);
+    console.log("El token del usuario es:"+this.tokenUsuario);
   }
 }

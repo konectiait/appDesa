@@ -1,7 +1,7 @@
 <ion-header class="bg-transparent">
     <ion-navbar>
-        <ion-title>{{'sign_in' | translate}} 
-            <span class="end" (click)="register()">
+        <ion-title>
+            <span class="start" (click)="register()">
                 <span  style="font-size: 2.5rem;">+ </span>
                 {{'register' | translate}}
             </span>
@@ -22,7 +22,7 @@
         <ion-list no-lines padding-left padding-right>
             <ion-item>
                 <ion-label floating>{{'email_address' | translate}}</ion-label>
-                <ion-input type="email" [(ngModel)]="user.email" value="samanthasmith@mail.com"></ion-input>
+                <ion-input type="email" [(ngModel)]="user.Mail" value="samanthasmith@mail.com"></ion-input>
             </ion-item>
             <ion-item class="password">
                 <ion-label floating>{{'password' | translate}}</ion-label>

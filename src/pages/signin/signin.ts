@@ -5,23 +5,16 @@ import { TabsPage } from '../tabs/tabs';
 import { RegisterPage } from '../register/register';
 import { PasswordPage } from '../password/password';
 import { AutenticationServiceProvider } from '../../providers/autentication-service/autentication-service';
-
-export class User {
-      email: string;
-      password: string;
-  }
-
+import { GlobalProvider } from "../../providers/global/global";
+import { UserServiceProvider } from '../../providers/user-service/user-service';
 
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html'
 })
 export class SigninPage {
-      public user:User = new User();
-
-      constructor(public navCtrl: NavController, public authService:AutenticationServiceProvider,public toastController: ToastController) {
-
-      }
+        constructor(public navCtrl: NavController, public authService:AutenticationServiceProvider,public toastController: ToastController, public userService: UserServiceProvider, private user:GlobalProvider) {
+     }
   
  
  tabs(){
@@ -36,13 +29,14 @@ export class SigninPage {
   
    IngresarUsuario(){
       let token ="";
-      console.log("El mail es: "+this.user.email);
+      console.log("El mail es: "+this.user.Mail);
       console.log("El pass es: "+this.user.password);
       
-      this.authService.loginUser( this.user.email, this.user.password)
+      this.authService.loginUser( this.user.Mail, this.user.password)
       .then(info=>{
         console.log('Usuario conectado');
-        token =info.user.uid;
+        this.user.Token = info.user.uid;
+        this.getUserByToken();
         this.navCtrl.setRoot(TabsPage,{tokenU:token});
       })
       .catch(error=>{
@@ -56,6 +50,18 @@ export class SigninPage {
         duration: 3000
       });
       toast.present();
+    }
+
+    getUserByToken() {    
+      this.userService.getUserByToken(this.user.Token)        
+      .subscribe(
+          (data)=> {
+            this.presentToast('OK');
+            console.log(data);
+            console.log("Usuario Id: "+ data);
+          },
+          (error)=>{console.log(error);}
+      )        
     }
 
 }

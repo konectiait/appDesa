@@ -18,7 +18,9 @@
 
 <ion-content class="bg-color">
   <div [ngSwitch]="near">
-      <ion-list *ngSwitchCase="'Ofrecidos'" no-lines>
+      <!--*ngSwitchCase="'Ofrecidos'" No funciona con 2 *ng-->
+      <ion-list *ngFor="let d of canjesLst; let i = index" no-lines>
+        <ng-container *ngSwitchCase="'Ofrecidos'">
         <ion-item (click)="edit_event()">   
           <img src="assets/imgs/10.png" class="bg">
           
@@ -27,15 +29,15 @@
               6 Dias
           </ion-badge>
           <div class="text">
-              <h2>10 Clases de Guitarra acústica </h2>
+              <h2>{{d.Nombre}}</h2>
               <p class="d-flex">
                   <span class="text-theme">Palermo. Buenos Aires</span>
                   <span class=""> | Música</span>
-                  <span class="end">$2.300</span>
+                  <span class="end">$ {{d.Importe}}</span>
               </p>                  
           </div>
         </ion-item>
-        <ion-item (click)="edit_event()">
+        <!--<ion-item (click)="edit_event()">
           <img src="assets/imgs/3.png" class="bg">
           
           <ion-badge item-end>
@@ -66,7 +68,8 @@
                   <span class="end">$1.800</span>
               </p>                  
           </div>
-        </ion-item>
+        </ion-item>-->
+    </ng-container>
       </ion-list>      
       <ion-list class="ListReview" no-lines *ngSwitchCase="'Recibidos'">
         <ion-item  (click)="ViewMatch()">
@@ -77,7 +80,7 @@
                     </div>
                     <h2 class="text-black">
                         Martina Valdez
-                        <span class="text-gray">2 Horas</span>
+                        <span class="text-gray">3 Horas</span>
                     </h2>
                 </div>
                 <div class="rating end">

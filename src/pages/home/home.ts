@@ -12,16 +12,25 @@ import { NavController, ModalController,NavParams} from 'ionic-angular';
  import {CategoryresultPage} from '../categoryresult/categoryresult';
  import { AccountPage } from '../account/account';
  import { NewCanjePage } from '../new-canje/new-canje';
+ import { CategoryServiceProvider } from '../../providers/category-service/category-service';
+ import { ProductServiceProvider } from '../../providers/product-service/product-service';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  result;
+  categoriasLst;
+  bannersLst;
+  canjesLst;
+  descuentosLst;
   near: string = "offers";
   tokenUsuario;
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController,public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,public navParams: NavParams, public serviceCat: CategoryServiceProvider, public serviceProd: ProductServiceProvider) {
       this.tokenUsuario = this.navParams.get('tokenU');
+      this.ObtenerCategorias();
+      this.getHome();
       console.log("EL token del usuario es:"+this.tokenUsuario);
   }
  
@@ -63,4 +72,28 @@ export class HomePage {
     let modal = this.modalCtrl.create(SearchPage);
     modal.present();
   } 
+
+  ObtenerCategorias() {    
+    this.serviceCat.GetCategorias()        
+    .subscribe(
+        (data)=> {
+          this.categoriasLst=data;
+          console.log("La categorìa 1: "+ this.categoriasLst[0].Nombre);
+        },
+        (error)=>{console.log(error);}
+    )   
+  }
+    
+    getHome() {    
+      this.serviceProd.getHome()        
+      .subscribe(
+          (data:any)=> {
+            this.result = data;   // get data in result variable
+            this.bannersLst = data.Banners;
+            this.canjesLst = data.Canjes;
+            this.descuentosLst = data.Descuentos;
+          },
+          (error)=>{console.log(error);}
+      )  
+    }
 }

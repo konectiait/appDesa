@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-      <ion-title>{{'new_canje' | translate}}<span class="end text-theme" (click)="tabs() ">{{'save' | translate}}</span></ion-title>
+      <ion-title>{{'new_canje' | translate}}<span class="end text-theme" (click)="postCanje() ">{{'save' | translate}}</span></ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content class="bg-color">
@@ -11,12 +11,16 @@
           </div>
           <ion-item>
               <ion-label floating>{{'event_title' | translate}}</ion-label>
-              <ion-textarea type="text" value=""></ion-textarea>
-          </ion-item>            
+              <ion-textarea type="text" value="" [(ngModel)]="product.Nombre"></ion-textarea>
+          </ion-item>           
           <ion-item>
+                <ion-label floating>{{'event_title' | translate}}</ion-label>
+                <ion-textarea type="text" value="" [(ngModel)]="product.Descripcion"></ion-textarea>
+            </ion-item>            
+          <!--<ion-item>
               <ion-label floating>{{'address2' | translate}}</ion-label>
               <ion-input type="text" value=""></ion-input>
-          </ion-item>
+          </ion-item>-->
           <ion-item>
               <ion-label floating>{{'categories' | translate}}</ion-label>
               <ion-input type="text" value="Música"></ion-input>
@@ -36,7 +40,7 @@
                       <ion-label item-start>{{'price' | translate}}</ion-label>
                       <div class="input_box d-flex" item-end>
                           <ion-icon class="text-black" name="cash"></ion-icon>
-                          <ion-input type="text" value="0"></ion-input>
+                          <ion-input type="text" value="0" [(ngModel)]="product.Importe"></ion-input>
                       </div>
                   </ion-item>
               </ion-col>

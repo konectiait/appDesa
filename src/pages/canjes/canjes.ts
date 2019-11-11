@@ -9,6 +9,7 @@ import { NavController, ModalController} from 'ionic-angular';
  import { Edit_eventPage } from '../edit_event/edit_event';
  import { NewCanjePage } from '../new-canje/new-canje';
  import { MatchPage } from '../match/match';
+ import { ProductServiceProvider } from '../../providers/product-service/product-service';
 
 
 @Component({
@@ -16,10 +17,10 @@ import { NavController, ModalController} from 'ionic-angular';
   templateUrl: 'canjes.html',
 })
 export class CanjesPage {
-
+  canjesLst;
   near: string = "Ofrecidos";
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
-
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public serviceProd: ProductServiceProvider) {
+    this.getOfrecidos();
   }
   NuevoCanje(){
     this.navCtrl.push(NewCanjePage)
@@ -48,4 +49,13 @@ export class CanjesPage {
     this.navCtrl.push(MatchPage)
   }
   
+  getOfrecidos() {    
+    this.serviceProd.getProductByUser('3')        
+    .subscribe(
+        (data:any)=> {
+          this.canjesLst = data;   // get data in result variable
+        },
+        (error)=>{console.log(error);}
+    )  
+  }
 }
