@@ -7,17 +7,17 @@
 </ion-header>
 
 <ion-content class="bg-color">
-    <ion-list no-lines>
+    <ion-list no-lines *ngFor="let d of chatLst; let i = index">
         <ion-item class="active" (click)="chatting()">
             <div class="img-box">
                 <img src="assets/imgs/background.png">
             </div>
             <div class="details">
-                <h2 class="text-white d-flex">Las Medialunas del Abuelo<span class="end">12:20</span></h2>
-                <p class="text-white d-flex">Muchas gracias.<span class="end notifications">1</span></p>
+                <h2 class="text-white d-flex">Las Medialunas del Abuelo<span class="end">{{d.Fecha_Ultimo_Mensaje}}</span></h2>
+                <p class="text-white d-flex">{{d.Ultimo_Mensaje}}<span class="end notifications">1</span></p>
             </div>
         </ion-item>
-        <ion-item (click)="chatting()">
+        <!--<ion-item (click)="chatting()">
             <div class="img-box">
                 <img src="assets/imgs/chat_2.jpg">
             </div>
@@ -61,6 +61,6 @@
                 <h2 class="text-white d-flex">Dietética La Colmena<span class="end">Ayer</span></h2>
                 <p class=" d-flex">Muchas gracias, me quedó perfecto.<span class="end"></span></p>
             </div>
-        </ion-item>
+        </ion-item>-->
     </ion-list>
 </ion-content>

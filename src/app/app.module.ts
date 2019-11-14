@@ -49,6 +49,7 @@ import * as firebase from 'firebase';
 import { GlobalProvider } from '../providers/global/global';
 import { ProductServiceProvider } from '../providers/product-service/product-service';
 import { GlobalProductProvider } from '../providers/global-product/global-product';
+import { ChatServiceProvider } from '../providers/chat-service/chat-service';
 
  
 firebase.initializeApp({
@@ -143,7 +144,8 @@ firebase.initializeApp({
     UserServiceProvider,
     GlobalProvider,
     ProductServiceProvider,
-    GlobalProductProvider
+    GlobalProductProvider,
+    ChatServiceProvider
   ]
 })
 export class AppModule {}

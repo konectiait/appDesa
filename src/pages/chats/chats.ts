@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-
-  import { SearchPage } from '../search/search';
+import { ChatServiceProvider } from '../../providers/chat-service/chat-service';
+import { SearchPage } from '../search/search';
 import { ChattingPage } from '../chatting/chatting';
+
 @Component({
   selector: 'page-chats',
   templateUrl: 'chats.html'
 })
 export class ChatsPage {
-
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
-
+  chatLst;
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public serviceChat: ChatServiceProvider) {
+    this.getChats();
   }
   
   chatting(){
@@ -21,5 +22,15 @@ export class ChatsPage {
     let modal = this.modalCtrl.create(SearchPage);
     modal.present();
   } 
+
+  getChats() {    
+    this.serviceChat.getChats()        
+    .subscribe(
+        (data)=> {
+          this.chatLst=data;
+        },
+        (error)=>{console.log(error);}
+    )   
+  }
 
 }
