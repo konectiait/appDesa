@@ -1,23 +1,18 @@
 import { HttpClientModule, HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-/*
-  Generated class for the CategoryServiceProvider provider.
+import { GlobalProvider } from "../../providers/global/global";
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class CategoryServiceProvider {
 
   
-  apiUrl = 'http://mundocanje.tk/api/';
-  
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public global:GlobalProvider) {
     //console.log('Hello CategoryServiceProvider Provider');
   }
 
   GetCategorias() {
-    return this.http.get(this.apiUrl+'categorias/');
+    console.log("La API es: "+this.global.ApiUrl);
+    return this.http.get(this.global.ApiUrl+'categorias/');
   }
 
 }

@@ -1,4 +1,9 @@
 page-map {
+    #map_canvas{
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
     .scroll-content {
         margin-bottom: 0 !important;
     }
@@ -205,6 +210,22 @@ page-map {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    .footer {
+
+        .fixed-bottom {
+            
+            ion-card {
+                
+                ion-item {
+                    background-color: #e3c9f5  !important;
+                }
+                 h3 span {
+                    color: #292727 !important;
                 }
             }
         }

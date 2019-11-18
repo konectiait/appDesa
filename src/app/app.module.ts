@@ -31,7 +31,8 @@ import { CanjesPage } from '../pages/canjes/canjes';
 import { NewCanjePage } from '../pages/new-canje/new-canje';
 import { MatchPage } from '../pages/match/match';
 import { NewchattingPage } from '../pages/newchatting/newchatting';
-
+import {ListCanjesPage} from '../pages/list-canjes/list-canjes';
+import {ListDescuentosPage} from '../pages/list-descuentos/list-descuentos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -50,6 +51,10 @@ import { GlobalProvider } from '../providers/global/global';
 import { ProductServiceProvider } from '../providers/product-service/product-service';
 import { GlobalProductProvider } from '../providers/global-product/global-product';
 import { ChatServiceProvider } from '../providers/chat-service/chat-service';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { CiudadesServiceProvider } from '../providers/ciudades-service/ciudades-service';
+import { PedidosServiceProvider } from '../providers/pedidos-service/pedidos-service';
 
  
 firebase.initializeApp({
@@ -89,8 +94,9 @@ firebase.initializeApp({
     CanjesPage,
     NewCanjePage,
     MatchPage,
-    NewchattingPage
-
+    NewchattingPage,
+    ListCanjesPage,
+    ListDescuentosPage
   ],
   imports: [
     BrowserModule,
@@ -131,7 +137,9 @@ firebase.initializeApp({
     CanjesPage,
     NewCanjePage,
     MatchPage,
-    NewchattingPage
+    NewchattingPage,
+    ListCanjesPage,
+    ListDescuentosPage
   ],
   providers: [
     StatusBar,
@@ -145,7 +153,11 @@ firebase.initializeApp({
     GlobalProvider,
     ProductServiceProvider,
     GlobalProductProvider,
-    ChatServiceProvider
+    ChatServiceProvider,
+    GoogleMaps,
+    Geolocation,
+    CiudadesServiceProvider,
+    PedidosServiceProvider
   ]
 })
 export class AppModule {}

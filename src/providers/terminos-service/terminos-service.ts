@@ -1,5 +1,6 @@
 import { HttpClientModule, HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GlobalProvider } from "../../providers/global/global";
 
 @Injectable()
 export class TerminosServiceProvider {
@@ -9,13 +10,13 @@ export class TerminosServiceProvider {
     
     clientes;
     cliente: any;
-    apiUrl = 'http://mundocanje.tk/api/';
+    
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public global:GlobalProvider) {
     //console.log('Hello TerminosServiceProvider Provider');
   }
   GetTerminos() {
-    return this.http.get(this.apiUrl+'terminos/');
+    return this.http.get(this.global.ApiUrl+'terminos/');
     }
   
   findAll() {
@@ -41,7 +42,7 @@ return Promise.resolve(this.favorites);
 
 
   obtenerDatos() {    
-    return this.http.get(this.apiUrl+'terminos');
+    return this.http.get(this.global.ApiUrl+'terminos');
   }
   //GetDatosId(id) {
   //return this.http.get(this.apiUrl+'clientes/'+id);
@@ -53,7 +54,7 @@ let postData2 = {
     "NombreFantasia": key,
     "Direccion": ""
 }
-return this.http.post(this.apiUrl+'clientes/clientesbyfiltros', postData2,{headers: {'Accept': 'application/json','Content-Type': 'application/json', }});    
+return this.http.post(this.global.ApiUrl+'clientes/clientesbyfiltros', postData2,{headers: {'Accept': 'application/json','Content-Type': 'application/json', }});    
 
 }
 
@@ -75,7 +76,7 @@ return this.http.post(this.apiUrl+'clientes/clientesbyfiltros', postData2,{heade
         "rating4": rating4
     }   
     console.log("va a mandar alto pos3");        
-    return this.http.post(this.apiUrl+'Clientes_Comentarios', postData2,{headers: {'Accept': 'application/json','Content-Type': 'application/json', }});
+    return this.http.post(this.global.ApiUrl+'Clientes_Comentarios', postData2,{headers: {'Accept': 'application/json','Content-Type': 'application/json', }});
 
   }
 

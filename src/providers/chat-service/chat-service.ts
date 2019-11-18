@@ -1,5 +1,6 @@
 import { HttpClientModule, HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GlobalProvider } from "../../providers/global/global";
 /*
   Generated class for the CategoryServiceProvider provider.
 
@@ -10,14 +11,14 @@ import { Injectable } from '@angular/core';
 export class ChatServiceProvider {
 
   
-  apiUrl = 'http://localhost:51199/api/';
   
-  constructor(public http: HttpClient) {
+  
+  constructor(public http: HttpClient, public global:GlobalProvider) {
     
   }
 
   getChats(){
-    return this.http.get(this.apiUrl+'chats');
+    return this.http.get(this.global.ApiUrl+'chats');
   }
 
 }

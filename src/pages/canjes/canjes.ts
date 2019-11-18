@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController} from 'ionic-angular';
-
+import { NavController, ModalController,NavParams} from 'ionic-angular';
  import { StorePage } from '../store/store';
  import { EventdetailPage } from '../eventdetail/eventdetail';
  import { OfferdetailPage } from '../offerdetail/offerdetail';
@@ -10,6 +9,8 @@ import { NavController, ModalController} from 'ionic-angular';
  import { NewCanjePage } from '../new-canje/new-canje';
  import { MatchPage } from '../match/match';
  import { ProductServiceProvider } from '../../providers/product-service/product-service';
+ import { PedidosServiceProvider } from '../../providers/pedidos-service/pedidos-service';
+ import { UserServiceProvider } from '../../providers/user-service/user-service';
 
 
 @Component({
@@ -18,9 +19,16 @@ import { NavController, ModalController} from 'ionic-angular';
 })
 export class CanjesPage {
   canjesLst;
+  recibidosLst:any;
   near: string = "Ofrecidos";
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public serviceProd: ProductServiceProvider) {
-    this.getOfrecidos();
+  tokenUsuario;
+  IdUsuario:any;
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public userService: UserServiceProvider,public navParams: NavParams, public serviceProd: ProductServiceProvider, public servicePedido:PedidosServiceProvider) {
+    this.tokenUsuario = this.navParams.get('tokenU');  
+    this.IdUsuario="3";
+    this.getOfrecidos(this.IdUsuario);
+    this.getRecibidos(this.IdUsuario);
   }
   NuevoCanje(){
     this.navCtrl.push(NewCanjePage)
@@ -49,8 +57,8 @@ export class CanjesPage {
     this.navCtrl.push(MatchPage)
   }
   
-  getOfrecidos() {    
-    this.serviceProd.getProductByUser('3')        
+  getOfrecidos(idUsuario) {    
+    this.serviceProd.getProductByUser(idUsuario)        
     .subscribe(
         (data:any)=> {
           this.canjesLst = data;   // get data in result variable
@@ -58,4 +66,15 @@ export class CanjesPage {
         (error)=>{console.log(error);}
     )  
   }
+  getRecibidos(idUsuario) {  
+    //Obtener el idUsuario  
+    this.servicePedido.getPedidosRecibidosByUser(idUsuario)        
+    .subscribe(
+        (data:any)=> {
+          this.recibidosLst = data;
+        },
+        (error)=>{console.log(error);}
+    )  
+  }
+  
 }

@@ -10,6 +10,9 @@ import { NavController, ModalController,NavParams} from 'ionic-angular';
  import { MapPage } from '../map/map';
  import { CategoriesPage } from '../categories/categories';
  import {CategoryresultPage} from '../categoryresult/categoryresult';
+ import {ListCanjesPage} from '../list-canjes/list-canjes';
+import {ListDescuentosPage} from '../list-descuentos/list-descuentos';
+ 
  import { AccountPage } from '../account/account';
  import { NewCanjePage } from '../new-canje/new-canje';
  import { CategoryServiceProvider } from '../../providers/category-service/category-service';
@@ -35,36 +38,39 @@ export class HomePage {
   }
  
  edit_offer(){
-        this.navCtrl.push(Edit_offerPage)
+        this.navCtrl.push(Edit_offerPage,{tokenU:this.tokenUsuario})
   }  
   NuevoCanje(){
-      this.navCtrl.push(NewCanjePage)
+      this.navCtrl.push(NewCanjePage,{tokenU:this.tokenUsuario})
   }  
   
   edit_event(){
-        this.navCtrl.push(Edit_eventPage)
+        this.navCtrl.push(Edit_eventPage,{tokenU:this.tokenUsuario})
   } 
   offerdetail(){
-        this.navCtrl.push(OfferdetailPage)
+        this.navCtrl.push(OfferdetailPage,{tokenU:this.tokenUsuario})
   }
   eventdetail(){
-        this.navCtrl.push(EventdetailPage)
+        this.navCtrl.push(EventdetailPage,{tokenU:this.tokenUsuario})
   }
   map(){
-        this.navCtrl.push(MapPage)
+        this.navCtrl.push(MapPage,{tokenU:this.tokenUsuario})
   }
   perfil(){
-      this.navCtrl.push(AccountPage)
+      this.navCtrl.push(AccountPage,{tokenU:this.tokenUsuario})
 }
   
   VerCategorias(){
-      this.navCtrl.push(CategoriesPage)
+      this.navCtrl.push(CategoriesPage,{tokenU:this.tokenUsuario})
   }
   VerMasCanjes(){
-      this.navCtrl.push(CategoryresultPage)
+      this.navCtrl.push(ListCanjesPage,{tokenU:this.tokenUsuario})
   } 
+  VerMasDescuentos(){
+    this.navCtrl.push(ListDescuentosPage,{tokenU:this.tokenUsuario})
+} 
   category_result(){
-      this.navCtrl.push(CategoryresultPage)
+      this.navCtrl.push(CategoryresultPage,{tokenU:this.tokenUsuario})
   } 
   
 

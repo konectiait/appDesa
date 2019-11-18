@@ -2,15 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
-
-/*
-  Generated class for the GlobalProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class GlobalProvider {
+
+  //public ApiUrl = "http://mundocanje.tk/api/";  
+  public ApiUrl = "http://localhost:51199/api/";
 
   private user: GlobalProvider; 
     Id: string;
@@ -26,6 +22,8 @@ export class GlobalProvider {
     Cuit: string;
     Imagen: string;
     IdPlan: string;
+    IdLocalidad: string;
+    Fecha_Alta: string;
 
     getUser(): GlobalProvider {
       return this.user;

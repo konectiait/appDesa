@@ -22,21 +22,21 @@
       <ion-list *ngFor="let d of canjesLst; let i = index" no-lines>
         <ng-container *ngSwitchCase="'Ofrecidos'">
         <ion-item (click)="edit_event()">   
-          <img src="assets/imgs/10.png" class="bg">
-          
-          <ion-badge item-end>
-              <ion-icon name="md-stopwatch"></ion-icon>
-              6 Dias
-          </ion-badge>
-          <div class="text">
-              <h2>{{d.Nombre}}</h2>
-              <p class="d-flex">
-                  <span class="text-theme">Palermo. Buenos Aires</span>
-                  <span class=""> | Música</span>
-                  <span class="end">$ {{d.Importe}}</span>
-              </p>                  
-          </div>
+                <img [src]="d.Imagen" class="bg">          
+                <ion-badge item-end>
+                        <ion-icon name="md-stopwatch"></ion-icon>
+                        {{d.Ult_Dias}} Días
+                </ion-badge>          
+                <div class="text">
+                    <h2>{{d.Nombre}}</h2>
+                    <p class="d-flex">
+                    <span class="text-theme">{{d.Descripcion}}</span>
+                    <span class=""> | {{d.Categoria}}</span>
+                    <span class="end">$ {{d.Precio}}</span>
+                    </p>                  
+                </div>
         </ion-item>
+
         <!--<ion-item (click)="edit_event()">
           <img src="assets/imgs/3.png" class="bg">
           
@@ -71,7 +71,33 @@
         </ion-item>-->
     </ng-container>
       </ion-list>      
-      <ion-list class="ListReview" no-lines *ngSwitchCase="'Recibidos'">
+      <ion-list class="ListReview" no-lines *ngSwitchCase="'Recibidos'" >
+          <div *ngFor="let d of recibidosLst">
+            <ion-item  (click)="ViewMatch()">
+                    <div class="item_header d-flex">
+                        <div class="profile d-flex">
+                            <div class="profile-img">
+                                <img src="assets/imgs/dp1.png">
+                            </div>
+                            <h2 class="text-black">
+                                    {{d.Nombre_Usuario}}
+                                <span class="text-gray">{{d.Ult_Dias}} Días</span>
+                            </h2>
+                        </div>
+                        <div class="rating end">
+                            <ion-icon name="md-star" class="acteive"></ion-icon>
+                            <ion-icon name="md-star" class="acteive"></ion-icon>
+                            <ion-icon name="md-star" class="acteive"></ion-icon>
+                            <ion-icon name="md-star" class="acteive"></ion-icon>
+                            <ion-icon name="md-star" class=""></ion-icon>
+                        </div>
+                    </div>
+                    <p class="text-white text">
+                            {{d.Comentarios}}. Precio estimado ${{d.Importe}}
+                    </p>
+                </ion-item>
+            </div>
+          <!--
         <ion-item  (click)="ViewMatch()">
             <div class="item_header d-flex">
                 <div class="profile d-flex">
@@ -167,6 +193,8 @@
                 Quisiera cambiar servicios de páginas web por tus Anteojos Rayban. Precio estimado $3000
             </p>
         </ion-item>
+
+    -->
     </ion-list>
       <ion-list *ngSwitchCase="'Canjeados'">
           <ion-item (click)="eventdetail()">

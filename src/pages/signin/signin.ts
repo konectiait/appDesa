@@ -28,7 +28,7 @@ export class SigninPage {
   }
   
    IngresarUsuario(){
-      let token ="";
+      
       console.log("El mail es: "+this.user.Mail);
       console.log("El pass es: "+this.user.password);
       
@@ -37,7 +37,7 @@ export class SigninPage {
         console.log('Usuario conectado');
         this.user.Token = info.user.uid;
         this.getUserByToken();
-        this.navCtrl.setRoot(TabsPage,{tokenU:token});
+        this.navCtrl.setRoot(TabsPage,{tokenU:this.user.Token});
       })
       .catch(error=>{
             this.presentToast('Usuario o clave incorrecto');
@@ -56,7 +56,7 @@ export class SigninPage {
       this.userService.getUserByToken(this.user.Token)        
       .subscribe(
           (data)=> {
-            this.presentToast('OK');
+            //this.presentToast('OK');
             console.log(data);
             console.log("Usuario Id: "+ data);
           },

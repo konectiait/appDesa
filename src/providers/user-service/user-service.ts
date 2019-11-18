@@ -10,9 +10,6 @@ import { GlobalProvider } from "../../providers/global/global";
 @Injectable()
 export class UserServiceProvider {
 
-  
-  apiUrl = 'http://localhost:51199/api/';
-  
   constructor(public http: HttpClient, private user:GlobalProvider) {
     
   }
@@ -20,11 +17,12 @@ export class UserServiceProvider {
   postUser(user:GlobalProvider) {
     user.Id="0";
     console.log(user);
-    return this.http.post(this.apiUrl+'Usuarios/', user);
+    return this.http.post(this.user.ApiUrl+'Usuarios/', user);
   }
 
   getUserByToken(token:string){
-    return this.http.get(this.apiUrl+'Usuarios/GetUsuarioByToken?Token='+token);
+    //return this.http.get(this.user.ApiUrl+'Usuarios/GetUsuarioByToken?Token='+token);
+    return this.http.get(this.user.ApiUrl+'Usuarios/GetUsuarioByToken/'+token);
   }
 
 }
